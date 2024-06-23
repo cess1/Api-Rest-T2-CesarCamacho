@@ -1,0 +1,43 @@
+
+CREATE DATABASE BDCibertec;
+
+
+USE BDCibertec;
+
+
+CREATE TABLE Autor
+(
+ IdAutor 		INT NOT NULL AUTO_INCREMENT,
+ NomAutor		VARCHAR(50) NOT NULL,
+ ApeAutor 		VARCHAR(50) NOT NULL,
+ FechNacAutor	DATE NOT NULL,
+ PRIMARY KEY (IdAutor)
+);
+
+
+CREATE TABLE Publicacion
+(
+ IdPublicacion 		INT NOT NULL AUTO_INCREMENT,
+ Titulo 			VARCHAR(250) NOT NULL,
+ Resumen 			VARCHAR(250) NOT NULL,
+ FechPublicacion	DATE NOT NULL,
+ IdAutor 			INT NOT NULL,
+ PRIMARY KEY (IdPublicacion),
+ FOREIGN KEY (IdAutor) REFERENCES Autor(IdAutor)
+);
+
+-- Insertar registros en la tabla Autor
+INSERT INTO Autor (NomAutor, ApeAutor, FechNacAutor) VALUES
+('Juan', 'Pérez', '1985-03-15'),
+('María', 'García', '1990-07-22'),
+('Carlos', 'Ramos', '1983-11-05'),
+('Ana', 'Torres', '1988-01-18'),
+('Luis', 'Fernández', '1982-05-30');
+
+-- Insertar registros en la tabla Publicacion
+INSERT INTO Publicacion (Titulo, Resumen, FechPublicacion, IdAutor) VALUES
+('Tecnologías de la Información', 'Un estudio sobre el impacto de las TI en la educación.', '2020-05-10', 1),
+('Redes y Comunicaciones', 'Avances recientes en redes de telecomunicaciones.', '2019-08-14', 2),
+('Seguridad Informática', 'Tendencias y desafíos en la ciberseguridad.', '2021-02-21', 3),
+('Inteligencia Artificial', 'Aplicaciones de la IA en la industria moderna.', '2018-12-03', 4),
+('Bases de Datos', 'Optimización y manejo eficiente de bases de datos.', '2022-04-15', 5);
